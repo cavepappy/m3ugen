@@ -137,7 +137,7 @@ fn main() -> io::Result<()> {
 
             // move file
             match fs::rename(&curr_file, &new_file) {
-                Ok(_) => println!("Moved {} to {}", curr_file, new_file.to_str().unwrap()),
+                Ok(_) => (),
                 Err(e) => println!(
                     "ERROR ({e}): Unable to move {} to {}",
                     curr_file,

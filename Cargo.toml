@@ -1,5 +1,5 @@
 [package]
-name = "m3u-converter"
+name = "m3ugen"
 version = "0.1.0"
 edition = "2024"
 
