@@ -51,7 +51,6 @@ fn build_path_from_parts(parts: &Vec<&str>) -> ffi::OsString {
             });
         }
     });
-    println!("Building Path: {}", ret.to_str().unwrap());
     ret
 }
 
@@ -81,7 +80,6 @@ fn main() -> io::Result<()> {
         let mut hidden_name: String = String::new();
         hidden_name.push_str(".");
         hidden_name.push_str(get_path_dir_name(curr.path().to_str().unwrap()).as_str());
-        println!("Current Directory: {}", curr_name);
 
         // step 5b: make a path to the sub_directory
         let sub_dir = build_path_from_parts(&vec![path_to_parent, &curr_name, &hidden_name]);
@@ -91,13 +89,11 @@ fn main() -> io::Result<()> {
 
         // step 5d: create a sub-dir for this file (if it doesn't already exist)
         let _ = fs::create_dir(&sub_dir).or_else(|e| Err(e));
-        println!("Sub Directory: {}", sub_dir.to_str().unwrap());
 
         // Build path to the output .m3u file
         let mut file_name = String::new();
         file_name.push_str(curr_name.as_str());
         file_name.push_str(".m3u");
-        println!("File Name: {}", file_name);
 
         // Create the output file
         let outfile = fs::File::create(build_path_from_parts(&vec![
@@ -121,7 +117,6 @@ fn main() -> io::Result<()> {
                 && !curr_file.ends_with("cue")
                 && !curr_file.ends_with("bin")
             {
-                println!("Skipping {curr_file}");
                 continue;
             }
 
