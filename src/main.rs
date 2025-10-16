@@ -57,7 +57,7 @@ fn build_path_from_parts(parts: &Vec<&str>) -> ffi::OsString {
 
 // TODO skip directories that already have a sub directory containing a .m3u file OR only have one chd/set of bin/cue files
 // TODO create a log file that contains any directories that have both chd and bin/cue files
-// TODO create hidden sub directories by putting a "." at the beginning of the sub directory name
+// TODO integrate ratatui to create an optional interface (by passing --tui maybe?)
 fn main() -> io::Result<()> {
     // step 1: get input from the user
     let args: Vec<String> = env::args().collect();
