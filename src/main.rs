@@ -113,9 +113,9 @@ fn main() -> io::Result<()> {
             let curr_file_name = get_path_dir_name(&curr_file);
 
             // Skip the file if it's anything other than our data files
-            if !curr_file.ends_with("chd")
-                && !curr_file.ends_with("cue")
-                && !curr_file.ends_with("bin")
+            if !["chd", "cue", "bin"]
+                .iter()
+                .any(|ext| curr_file.ends_with(ext))
             {
                 continue;
             }
